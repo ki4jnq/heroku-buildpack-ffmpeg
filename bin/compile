@@ -7,7 +7,7 @@ indent() {
 echo "-----> Install ffmpeg"
 BUILD_DIR=$1
 VENDOR_DIR="vendor"
-DOWNLOAD_URL="http://artifact-bin.s3.amazonaws.com/bin/ffmpeg"
+DOWNLOAD_URL="http://artifact-bin.s3.amazonaws.com/bin/ffmpeg-2015-04-16.tar.gz"
 
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
