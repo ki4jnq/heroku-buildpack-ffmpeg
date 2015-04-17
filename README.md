@@ -25,8 +25,25 @@ You can verify installing ffmpeg by following command.
 
     $ heroku run "ffmpeg -version"
 
-Hacking
--------
-If you want to use your own ffmpeg binary, fork and rewrite following line.
 
-https://github.com/shunjikonishi/heroku-buildpack-ffmpeg/blob/master/bin/compile#L10
+Building the Binary
+-----
+
+The ffmpeg binary was built using the [ffmpeg-static](https://github.com/stvs/ffmpeg-static) build scripts on a heroku [stack-image](https://github.com/heroku/stack-images) VM.
+
+To build it yourself
+
+- clone the stack-image heroku repository to your local machine via `git clone https://github.com/stvs/ffmpeg-static`, then `cd` into it
+- run `vagrant up`
+- run `vagrant ssh`
+- now clone the ffmpeg-static repo into the virtual machine: `git clone https://github.com/stvs/ffmpeg-static`
+- `cd ffmpeg-static`
+- `./build-ubuntu.sh`
+
+if the final ffmpeg compilation step fails due to a missing library (such as libopus):
+
+- manually copy the ffmpeg `./configure` command, remove the `--enable-opus` line, and then run it again
+- run `make` manually
+
+I had to disable libopus and one other library if I remember correctly.
+
